@@ -4,19 +4,23 @@
 
 header {
   font-size: 6em;
+  display: inline-block;
+  /* background-color: #444; */
+  color: white;
   text-align: center;
 }
 
 .navbar {
-  background-color: aqua;
+  
 }
 
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #333;
+  text-align: center;
 }
 
 li {
@@ -38,4 +42,21 @@ li a:hover {
 
 textarea {
   resize: none;
+}
+
+#guitar {
+  margin-top: 12em;
+  width: 18%;
+  /* filter: invert(1); */
+  float: left;
+  margin-left: 1em;
+
+}
+
+#bass {
+  margin-top: 6em;
+  width: 12%;
+  /* filter: invert(1); */
+  float: right;
+  margin-right: 2em;
 }

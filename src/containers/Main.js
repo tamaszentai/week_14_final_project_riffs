@@ -6,9 +6,19 @@ import FileList  from '../components/FileList';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const Main = () => {
+    const [files, setFiles] = useState([]);
+
+
     return(
         <div className="main">
-            <header>RIFFS</header>
+            <header>
+                RIFFS
+            </header>
+            <div className="intruments">
+                <img src="../../guitar.png" alt="guitar" id="guitar"/>
+                <img src="../../bass.png" alt="bass" id="bass"/>
+            </div>
+            <div className="router">
             <Router>
                 <React.Fragment>
                     <NavBar />
@@ -17,6 +27,7 @@ const Main = () => {
                     <Route path="/FileList" component={FileList} />
                 </React.Fragment>
             </Router>
+            </div>
         </div>
     )
 }

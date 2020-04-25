@@ -3,14 +3,18 @@ import React, { useState } from 'react';
 const UploadForm = () => {
     const [values, setValues] = useState({name: '', file: null, description: ''})
 
-    const handleInputChange = e => {
-        const {name, value} = e.target
+    const handleInputChange = event => {
+        const {name, value} = event.target
         setValues({...values, [name]: value})
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
     }
 
     return (
         <div className="uploadform">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                 name='name'
                 type="text" 
