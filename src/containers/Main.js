@@ -14,10 +14,7 @@ const Main = () => {
             <header>
                 RIFFS
             </header>
-            <div className="intruments">
-                <img src="../../guitar.png" alt="guitar" id="guitar"/>
-                <img src="../../bass.png" alt="bass" id="bass"/>
-            </div>
+            
             <div className="router">
             <Router>
                 <React.Fragment>
@@ -27,6 +24,10 @@ const Main = () => {
                     <Route path="/FileList" component={FileList} />
                 </React.Fragment>
             </Router>
+            </div>
+            <div className="intruments">
+                <img src="../../guitar.png" alt="guitar" id="guitar"/>
+                <img src="../../bass.png" alt="bass" id="bass"/>
             </div>
         </div>
     )

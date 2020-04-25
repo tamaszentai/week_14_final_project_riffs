@@ -13,7 +13,7 @@ const UploadForm = () => {
     }
 
     return (
-        <div className="uploadform">
+        <div className="form-style-5">
             <form onSubmit={handleSubmit}>
                 <input 
                 name='name'
