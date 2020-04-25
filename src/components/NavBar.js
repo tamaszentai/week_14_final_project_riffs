@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => (
-  <ul>
+  <div className="navbar">
+    <ul>
     <li>
       <Link to="/">Home</Link>
     </li>
@@ -13,6 +14,7 @@ const NavBar = () => (
         <Link to="/FileList">FileList</Link>
     </li>
   </ul>
+  </div>
 );
 
 export default NavBar;

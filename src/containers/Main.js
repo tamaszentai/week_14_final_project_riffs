@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const Main = () => {
     return(
-        <>
+        <div className="main">
+            <header>RIFFS</header>
             <Router>
                 <React.Fragment>
                     <NavBar />
@@ -16,7 +17,7 @@ const Main = () => {
                     <Route path="/FileList" component={FileList} />
                 </React.Fragment>
             </Router>
-        </>
+        </div>
     )
 }
 
