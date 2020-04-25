@@ -10,10 +10,6 @@ header {
   text-align: center;
 }
 
-.navbar {
-  
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -45,19 +41,17 @@ textarea {
 }
 
 #guitar {
+  display: inline-block;
   margin-top: 12em;
   width: 18%;
-  /* filter: invert(1); */
-  float: left;
   margin-left: 1em;
 
 }
 
 #bass {
+  display: inline-block;
   margin-top: 6em;
   width: 12%;
-  /* filter: invert(1); */
-  float: right;
   margin-right: 2em;
 }
 
