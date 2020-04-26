@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import $ from 'jquery';
 
 const UploadForm = () => {
-    const [values, setValues] = useState({name: '', file: null, description: ''})
+    //const [values, setValues] = useState({name: '', file: null, description: ''})
     const [file, setFile] = useState(null);
 
     // const handleInputChange = event => {
@@ -18,13 +17,17 @@ const UploadForm = () => {
 
     const handleInputChange = event => {
         const selectedFile = event.target.files[0];
+        if (selectedFile.type != 'audio/mpeg'){
+            console.log('Please select an audio file');
+            return;
+        }
         changeFile(selectedFile);
     }
 
     const handleSubmit = event => {
         event.preventDefault();
         const data = new FormData();// If file selected
-		if ( file ) {data.append( 'file', file, file.name );
+		if ( file ) {data.append( 'file', file, file.name, file.title, file.description );
 		axios.post( '/api/riffs/upload', data, {
 			headers: {
 			 'accept': 'application/json',

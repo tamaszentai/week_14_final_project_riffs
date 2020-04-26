@@ -10,22 +10,14 @@ import axios from 'axios';
 const Main = () => {
     const [files, setFiles] = useState(null);
 
-    const changeFiles = (newFiles) => {
-        setFiles(newFiles)
-    }
-
     useEffect(() => {
         axios.get("/api/riffs")
         .then(res => {
-            console.log(res.data);
-            //this.setState({ pictures: res.data });
-            changeFiles(res.data)
-            console.log(files);
+            //console.log(res.data);
+            setFiles(res.data)
           });
     }, [])
     
-   
-
     return(
         
         <div className="main">

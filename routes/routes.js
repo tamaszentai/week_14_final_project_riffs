@@ -22,26 +22,26 @@ const fileUpload = multer({
     cb(null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
    }
   }),
-  // limits:{ fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB
+  // // limits:{ fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB
   // fileFilter: function( req, file, cb ){
   //  checkFileType( file, cb );
   // }
  }).single('file');
 
- function checkFileType( file, cb ){
-    // Allowed ext
-    const filetypes = /MPEG/;
-    console.log(file);
-    // Check ext
-    const extname = filetypes.test( path.extname( file.originalname ).toLowerCase());
-    // Check mime
-    const mimetype = filetypes.test( file.mimetype );
-    if( mimetype && extname ){
-      return cb( null, true );
-    } else {
-      cb( 'Error: Images Only!' );
-    } 
- }
+//  function checkFileType( file, cb ){
+//     // Allowed ext
+//     const filetypes = /mp3/;
+//     console.log(file);
+//     // Check ext
+//     const extname = filetypes.test( path.extname( file.originalname ).toLowerCase());
+//     // Check mime
+//     const mimetype = filetypes.test( file.mimetype );
+//     if( mimetype && extname ){
+//       return cb( null, true );
+//     } else {
+//       cb( 'Error: Images Only!' );
+//     } 
+//  }
 
 // Get all Documents s Routes
 router.route("/").get((req, res, next) => {
@@ -61,8 +61,8 @@ router.route("/").get((req, res, next) => {
 });
 
 router.post( '/upload', ( req, res ) => {fileUpload( req, res, ( error ) => {
-  console.log( 'requestOkokok', req.file );
-  console.log( 'error', error );
+  // console.log( 'requestOkokok', req.file );
+  // console.log( 'error', error );
   if( error ){
    console.log( 'errors', error );
    res.json( { error: error } );
