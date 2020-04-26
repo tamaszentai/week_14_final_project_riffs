@@ -12,7 +12,7 @@ const Main = () => {
     return(
         <div className="main">
             <header>
-                RIFFS
+                <img src="../../riffs.png" id="logo"/>
             </header>
             
             <Router>
