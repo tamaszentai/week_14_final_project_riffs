@@ -2,7 +2,7 @@ const express = require( 'express' );
 const app = express();
 const bodyParser = require( 'body-parser' );
 const path = require( 'path' );
-const profile = require( './routes/routes');
+const routes = require( './routes/routes');
 const config = require("./config/config");
 
 app.use( bodyParser.urlencoded( { extended: false } ) );
@@ -10,7 +10,7 @@ app.use( bodyParser.json() );
 
 config.connectDB();
 
-app.use( '/api/profile', profile );
+app.use( '/api/riffs', routes );
 
 const port = process.env.PORT || 5000;
 

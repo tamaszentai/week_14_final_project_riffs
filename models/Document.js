@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 let documentSchema = new Schema(
   {
-    image: { type: String },
-    location: { type: String },
+    fileName: { type: String },
+    fileUrl: { type: String },
   },
   {
     // createdAt,updatedAt fields are automatically added into records

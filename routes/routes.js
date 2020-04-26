@@ -5,31 +5,33 @@ const multer = require('multer');
 const path = require( 'path' );
 const router = express.Router();
 const DOCUMENT = require('../models/Document');
+require('dotenv').config();
 
 const s3 = new aws.S3({
-  accessKeyId: 'AKIAVLQWZQLIHGAZYPA2',
-  secretAccessKey: '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',
-  Bucket: 'riffs'
+  accessKeyId: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  Bucket: process.env.BUCKET
 });
 
-const profileImgUpload = multer({
+const fileUpload = multer({
   storage: multerS3({
    s3: s3,
-   bucket: 'riffs',
+   bucket: process.env.BUCKET,
    acl: 'public-read',
    key: function (req, file, cb) {
     cb(null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
    }
   }),
   // limits:{ fileSize: 2000000 }, // In bytes: 2000000 bytes = 2 MB
-  fileFilter: function( req, file, cb ){
-   checkFileType( file, cb );
-  }
- }).single('profileImage');
+  // fileFilter: function( req, file, cb ){
+  //  checkFileType( file, cb );
+  // }
+ }).single('file');
 
  function checkFileType( file, cb ){
     // Allowed ext
-    const filetypes = /jpeg|jpg|png|gif/;
+    const filetypes = /MPEG/;
+    console.log(file);
     // Check ext
     const extname = filetypes.test( path.extname( file.originalname ).toLowerCase());
     // Check mime
@@ -58,7 +60,7 @@ router.route("/").get((req, res, next) => {
   );
 });
 
-router.post( '/profile-img-upload', ( req, res ) => {profileImgUpload( req, res, ( error ) => {
+router.post( '/upload', ( req, res ) => {fileUpload( req, res, ( error ) => {
   console.log( 'requestOkokok', req.file );
   console.log( 'error', error );
   if( error ){
@@ -71,16 +73,16 @@ router.post( '/profile-img-upload', ( req, res ) => {profileImgUpload( req, res,
     res.json( 'Error: No File Selected' );
    } else {
     // If Success
-    const imageName = req.file.key;
-    const imageLocation = req.file.location;
+    const fileName = req.file.key;
+    const fileUrl = req.file.location;
     // Save the file name into database into profile model
     res.json({
-     image: imageName,
-     location: imageLocation
+      fileName: fileName,
+      fileUrl: fileUrl
     });
     const newFileUploaded = {
-      image: imageName,
-      location: imageLocation
+      fileName: fileName,
+      fileUrl: fileUrl
     }
     const document = new DOCUMENT(newFileUploaded);
     document.save();
