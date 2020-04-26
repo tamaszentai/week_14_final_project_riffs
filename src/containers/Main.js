@@ -14,16 +14,18 @@ const Main = () => {
             <header>
                 RIFFS
             </header>
-            <div className="router">
+            
             <Router>
                 <React.Fragment>
                     <NavBar />
+                    <div className="content">
                     <Route exact path="/" component={Home} />
                     <Route path="/UploadForm" component={UploadForm} />
                     <Route path="/FileList" component={FileList} />
+                    </div>
                 </React.Fragment>
             </Router>
-            </div>
+            
         </div>
     )
 }
