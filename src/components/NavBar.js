@@ -8,10 +8,10 @@ const NavBar = () => (
       <Link to="/">Home</Link>
     </li>
     <li>
-      <Link to="/UploadForm">UploadForm</Link>
+      <Link to="/UploadForm">Upload Riff</Link>
     </li>
     <li>
-        <Link to="/FileList">FileList</Link>
+        <Link to="/FileList">Riff Browser</Link>
     </li>
   </ul>
   </div>
