@@ -20,7 +20,6 @@ const Main = () => {
             console.log(res.data);
             //this.setState({ pictures: res.data });
             changeFiles(res.data)
-            console.log(files);
           });
     }, [])
     
@@ -44,7 +43,7 @@ const Main = () => {
                     <div className="content">
                     <Route exact path="/" component={Home} />
                     <Route path="/UploadForm" component={UploadForm} />
-                    <Route path="/FileList" component={FileList} />
+                    <Route path="/FileList" render={() => <FileList files={files}/>}/>
                     </div>
                     <div className="right">
                         <img src="../../guitar.png" id="guitar"/>

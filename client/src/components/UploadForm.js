@@ -17,6 +17,7 @@ const UploadForm = () => {
     }
 
     const handleInputChange = event => {
+        console.log(event.target.files)
         const selectedFile = event.target.files[0];
         changeFile(selectedFile);
     }
