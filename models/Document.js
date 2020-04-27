@@ -5,6 +5,8 @@ let documentSchema = new Schema(
   {
     fileName: { type: String },
     fileUrl: { type: String },
+    title: { type: String},
+    description: {type: String}
   },
   {
     // createdAt,updatedAt fields are automatically added into records

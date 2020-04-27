@@ -1,12 +1,10 @@
-'use strict'
-
 const mongoose = require('mongoose');
 
 module.exports = {
-    'database': 'mongodb://localhost:27017/riffs',
+    database: 'mongodb://localhost:27017/riffs',
 
     // connect function to create a mongoDB connection
-    'connectDB' : function () {
+    connectDB: function () {
         mongoose.connect(this.database)
     },
 }
