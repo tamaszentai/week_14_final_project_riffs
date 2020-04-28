@@ -1,31 +1,48 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import $ from 'jquery';
 
 const UploadForm = () => {
-    const [values, setValues] = useState({name: '', file: null, description: ''})
+    //const [values, setValues] = useState({name: '', file: null, description: ''})
     const [file, setFile] = useState(null);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
 
     // const handleInputChange = event => {
     //     const {name, value} = event.target
     //     setValues({...values, [name]: value})
     // }
-    const changeFile = (file) => {
-        setFile(file);
-        console.log(file);
-        
+    // const changeFile = (file) => {
+    //     setFile(file);
+    //     console.log(file);
+    // }
+
+    const handleFileChange = event => {
+        const selectedFile = event.target.files[0];
+        if (selectedFile.type !== 'audio/mpeg'){
+            console.log('Please select an audio file!');
+            return;
+        }
+        setFile(selectedFile);
+        //changeFile(selectedFile);
     }
 
-    const handleInputChange = event => {
-        console.log(event.target.files)
-        const selectedFile = event.target.files[0];
-        changeFile(selectedFile);
+    const handleTitleChange = event => {
+        const newTitle = event.target.value;
+        setTitle(newTitle);
+    }
+
+    const handleDescriptionChange = event => {
+        const newDescription = event.target.value;
+        setDescription(newDescription);
     }
 
     const handleSubmit = event => {
         event.preventDefault();
         const data = new FormData();// If file selected
-		if ( file ) {data.append( 'file', file, file.name );
+        if ( file ) {
+        data.append( 'file', file);
+        data.append( 'title', title );
+        data.append( 'description', description );
 		axios.post( '/api/riffs/upload', data, {
 			headers: {
 			 'accept': 'application/json',
@@ -41,67 +58,47 @@ const UploadForm = () => {
 					// ,this.ocShowAlert( 'Max size: 2MB', 'red' );
 				 } else {
 					console.log( response.data );// If not the given file type
-					//this.ocShowAlert( response.data.error, 'red' );
 				 }
 				} else {
                  // Success
-                 console.log('success');
-                 
-				 let fileName = response.data;
-				 console.log( 'filedata', fileName );
-				 //this.ocShowAlert( 'File Uploaded', '#3089cf' );
+                 console.log('success');   
+				 let fileData = response.data;
+				 console.log( 'filedata', fileData );
 				}
 			 }
 			}).catch( ( error ) => {
             // If another error
             console.log('error'); 
-			//this.ocShowAlert( error, 'red' );
 		 });
 		} else {
          // if file not selected throw error
-         console.log('error'); 
-		// this.ocShowAlert( 'Please upload file', 'red' );
+         console.log('error'); 	
 		}
 	};
-
-	// ocShowAlert = ( message, background = '#3089cf' ) => {
-	// 	let alertContainer = document.querySelector( '#oc-alert-container' ),
-	// 	 alertEl = document.createElement( 'div' ),
-	// 	 textNode = document.createTextNode( message );
-	// 	alertEl.setAttribute( 'class', 'oc-alert-pop-up' );
-	// 	$( alertEl ).css( 'background', background );
-	// 	alertEl.appendChild( textNode );
-	// 	alertContainer.appendChild( alertEl );
-	// 	setTimeout( function () {
-	// 	 $( alertEl ).fadeOut( 'slow' );
-	// 	 $( alertEl ).remove();
-	// 	}, 3000 );
-	//  };
-    // }
 
     return (
         <div className="form-style-5">
             <form onSubmit={handleSubmit}>
-                {/* <input 
-                name='name'
+                <input 
+                //name='name'
                 type="text" 
-                placeholder="File name" 
-                value={values.name}
-                onChange={handleInputChange}/> */}
+                placeholder="File title" 
+                //value={values.name}
+                onChange={handleTitleChange}/>
 
                 <input 
-                name='file'
+                //name='file'
                 type="file" 
                 // value={values.file}
-                onChange={handleInputChange}/>
+                onChange={handleFileChange}/>
 
-                {/* <textarea 
-                name='description'
+                <textarea 
+                //name='description'
                 placeholder="Description here..." 
                 rows="10" 
                 cols="30" 
-                value={values.description} 
-                onChange={handleInputChange}/> */}
+                //value={values.description} 
+                onChange={handleDescriptionChange}/>
 
                 <input
                 type="submit" 
