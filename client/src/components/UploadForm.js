@@ -95,8 +95,9 @@ const UploadForm = () => {
                 <textarea 
                 //name='description'
                 placeholder="Description here..." 
-                rows="10" 
-                cols="30" 
+                maxlength="100"
+                rows="3" 
+                // cols="30"
                 //value={values.description} 
                 onChange={handleDescriptionChange}/>
 

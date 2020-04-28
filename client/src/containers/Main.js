@@ -39,16 +39,10 @@ const Main = () => {
                         <div className="navbar">
                         <NavBar refreshList={refreshList}/>
                         </div>
-                        <div className="left">
-                            {/* <img src="../../bass.png" id="bass"/> */}
-                        </div>
                         <div className="content">
                         <Route exact path="/" component={Home} />
                         <Route path="/UploadForm" component={UploadForm} />
                         <Route path="/FileList" render={() => <FileList files={files}/>}/>
-                        </div>
-                        <div className="right">
-                            {/* <img src="../../guitar.png" id="guitar"/> */}
                         </div>
                     </React.Fragment>
                 </Router>

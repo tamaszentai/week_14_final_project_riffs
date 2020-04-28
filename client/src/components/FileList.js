@@ -2,16 +2,21 @@ import React from 'react';
 import File from './File';
 
 const FileList = (props) => {
-    const riffNode = props.files.map((file, index) => {
-    return <File name={file.fileName} url={file.fileUrl}></File>
-})
+    let riffNode = null;
+    if ( props.files !== null) {
+        
+        riffNode = props.files.map((file, index) => {
+        return <File title={file.title} url={file.fileUrl} description={file.description}></File>
+    })}
+
+   
     console.log(props.files);
 
     
     return (
-        <>
-        <h1>{riffNode}</h1>
-        </>
+        <div className="filelist">
+        {riffNode}
+        </div>
     )
 }
 
