@@ -45,7 +45,7 @@ const UploadForm = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        setMessage(<div>Uploading</div>);
+        setMessage(<div className="progress">Uploading...</div>);
         const data = new FormData();// If file selected
         if ( file ) {
         data.append( 'file', file);
@@ -69,7 +69,7 @@ const UploadForm = () => {
 				 }
 				} else {
                  // Success
-                 setMessage(<div>Success!</div>)
+                 setMessage(<div className="success">Your riff is ours now!</div>)
                  clearForm();
 				 let fileData = response.data;
 				 console.log( 'filedata', fileData );

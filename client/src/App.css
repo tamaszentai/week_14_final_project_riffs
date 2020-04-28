@@ -231,3 +231,19 @@ summary {
 	font-size: 0.8em;
 }
 
+.progress {
+	font-size: 2em;
+	font-family: 'Lacquer', cursive;
+	color: rgb(150, 53, 53);
+	text-align: center;
+	padding: 10px;
+}
+
+
+.success {
+	font-size: 2em;
+	font-family: 'Lacquer', cursive;
+	color: rgb(89, 133, 24);
+	text-align: center;
+	padding: 10px;
+}
