@@ -4,7 +4,7 @@ const File = (props) => {
     return (
     <div>
         <h6>{props.name}</h6>
-        <audio controls>
+        <audio controls id="audioplayer">
             <source src={props.url} type="audio/mpeg" />
                 Your browser does not support the audio element.
         </audio>

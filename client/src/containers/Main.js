@@ -21,37 +21,44 @@ const Main = () => {
             //this.setState({ pictures: res.data });
             changeFiles(res.data)
           });
-    }, [])
+    },[])  
     
-   
+    
+    const refreshList = event => {
+        axios.get("/api/riffs")
+        .then(res => {
+            console.log(res.data);
+            //this.setState({ pictures: res.data });
+            changeFiles(res.data)
+          });
+      }
 
     return(
-        
-        <div className="main">
-            <header>
-                <img src="../../riffs.png" id="logo"/>
-            </header>
-            
-            <Router>
-                <React.Fragment>
-                    <div className="navbar">
-                    <NavBar />
-                    </div>
-                    <div className="left">
-                        <img src="../../bass.png" id="bass"/>
-                    </div>
-                    <div className="content">
-                    <Route exact path="/" component={Home} />
-                    <Route path="/UploadForm" component={UploadForm} />
-                    <Route path="/FileList" render={() => <FileList files={files}/>}/>
-                    </div>
-                    <div className="right">
-                        <img src="../../guitar.png" id="guitar"/>
-                    </div>
-                </React.Fragment>
-            </Router>
-            
-        </div>
+            <div className="main">
+                <header>
+                    <img src="../../riffs.png" id="logo"/>
+                </header>
+                
+                <Router>
+                    <React.Fragment>
+                        <div className="navbar">
+                        <NavBar refreshList={refreshList}/>
+                        </div>
+                        <div className="left">
+                            {/* <img src="../../bass.png" id="bass"/> */}
+                        </div>
+                        <div className="content">
+                        <Route exact path="/" component={Home} />
+                        <Route path="/UploadForm" component={UploadForm} />
+                        <Route path="/FileList" render={() => <FileList files={files}/>}/>
+                        </div>
+                        <div className="right">
+                            {/* <img src="../../guitar.png" id="guitar"/> */}
+                        </div>
+                    </React.Fragment>
+                </Router>
+                
+            </div>
     )
 }
 

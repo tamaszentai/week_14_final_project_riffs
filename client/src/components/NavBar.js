@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = () => (
+const NavBar = (props) => {
+ const hello = event => {
+   console.log('hello');
+ }
+
+ return (
   <div className="navbar">
     <ul>
     <li>
@@ -11,10 +16,11 @@ const NavBar = () => (
       <Link to="/UploadForm">Upload Riff</Link>
     </li>
     <li>
-        <Link to="/FileList">Riff Browser</Link>
+        <Link to="/FileList" onClick={props.refreshList}>Riff Browser</Link>
     </li>
   </ul>
   </div>
-);
+  
+ )};
 
 export default NavBar;
