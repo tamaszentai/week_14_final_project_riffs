@@ -8,10 +8,12 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	
 }
 
 
 .main {
+	overflow: hidden;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-rows: minmax(50px, auto);
@@ -21,17 +23,14 @@ html {
 	font-family: Comic;
 	}
 	
-	header { grid-area: 1 / 1 / 2 / 7; }
-	.navbar { grid-area: 2 / 1 / 3 / 7; text-align: center;}
-	.content { grid-area: 3 / 3 / 5 / 5; 
+	header { grid-area: 1 / 1 / 2 / 7;}
+	.navbar { grid-area: 2 / 1 / 3 / 7; text-align: center;} 
+	.content { grid-area: 3 / 3 / 5 / 5;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		margin-top: 5em;
+		overflow: scroll;
 	}
-
-
-
-
 
 header {
   text-align: center;
@@ -151,6 +150,7 @@ textarea {
 
 #audioplayer {
 	height: 1.5em;
+	padding-bottom: 1em;
 }
 
 #girl {
@@ -180,30 +180,32 @@ p {
 
 .filelist {
 	grid-area: 1 / 1 / 2 / 3;
+	margin: 0 auto;
+	width: 70%;
 }
 
 .file {
+
 	background-color: #333;
 	opacity: 0.8;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;
 	margin-bottom: 2em;
-	border-color: honeydew;
+	border-color: #333;
 	border-style: solid;
 	border-radius: 20px;
 	border-width: thin;
-	display: flex;
+	/* display: flex; */
 	color: white;
 	font-size: 1.5em;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	word-break: break-all;
 }
 
-.file-right {
-	grid-area: 1 / 2 / 2 / 3;
-	margin-left: 1em;
-	word-break: break-all;
+.file-left {
+	text-align: center;
 }
 
 h6 {
@@ -215,6 +217,17 @@ h5 {
 }
 
 .editdeletediv {
-padding-right: 1em;
+	margin-top: 1em;
+	margin-bottom: 0;
+}
+
+button {
+	margin: 0;
+	border-radius: 10px;
+}
+
+summary {
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 0.8em;
 }
 

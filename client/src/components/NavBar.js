@@ -6,6 +6,7 @@ const NavBar = (props) => {
    console.log('hello');
  }
 
+
  return (
   <div className="navbar">
     <ul>

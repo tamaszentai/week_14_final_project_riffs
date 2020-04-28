@@ -3,9 +3,11 @@ import axios from 'axios';
 
 const UploadForm = () => {
     //const [values, setValues] = useState({name: '', file: null, description: ''})
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [message, setMessage] = useState(null);
+
 
     // const handleInputChange = event => {
     //     const {name, value} = event.target
@@ -36,8 +38,14 @@ const UploadForm = () => {
         setDescription(newDescription);
     }
 
+    const clearForm = () => {
+        const form = document.querySelector('form');
+        form.reset()
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
+        setMessage(<div>Uploading</div>);
         const data = new FormData();// If file selected
         if ( file ) {
         data.append( 'file', file);
@@ -61,7 +69,8 @@ const UploadForm = () => {
 				 }
 				} else {
                  // Success
-                 console.log('success');   
+                 setMessage(<div>Success!</div>)
+                 clearForm();
 				 let fileData = response.data;
 				 console.log( 'filedata', fileData );
 				}
@@ -78,27 +87,21 @@ const UploadForm = () => {
 
     return (
         <div className="form-style-5">
+        { message }
             <form onSubmit={handleSubmit}>
                 <input 
-                //name='name'
                 type="text" 
                 placeholder="File title" 
-                //value={values.name}
                 onChange={handleTitleChange}/>
 
                 <input 
-                //name='file'
                 type="file" 
-                // value={values.file}
                 onChange={handleFileChange}/>
 
                 <textarea 
-                //name='description'
                 placeholder="Description here..." 
-                maxlength="100"
+                maxLength="100"
                 rows="3" 
-                // cols="30"
-                //value={values.description} 
                 onChange={handleDescriptionChange}/>
 
                 <input
@@ -106,6 +109,7 @@ const UploadForm = () => {
                 value="Upload" />
             </form>
         </div>
+        
     )
 }         
 export default UploadForm;
