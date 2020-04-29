@@ -24,29 +24,30 @@ const EditForm = (props) => {
     const handleEdit = event => {
         event.preventDefault();
 
-        axios.put("/api/riffs/edit/" + id, {title, description} )
+        axios.put("/api/riffs/edit/" + id, {
+            title: title,
+            description: description
+        })
         .then(() => {
             this.props.history.push("/");
         })
         .catch(error => {
             //alert("Oops some error happened, please try again");
         });
-        // setMessage(<div className="success">Update complete</div>);
-        // document.querySelector(".form-style-5").style.display = "none";
-        
-        // const data = new FormData();// If file selected
-        //  // if file not selected throw error
-        //  console.log('error');
-
+        setMessage(<div className="success">Update complete</div>);
+        document.querySelector(".test").style.display = "none";
+        setTimeout(function(){ window.location.href = "http://localhost:3000/FileList"; }, 500);
 	}
 	
 
     return (
         
         <>
-        { message }
+        
         <div className="form-style-5">
-
+        
+        { message }
+            <div className="test">
             <form onSubmit={handleEdit}>
                 <input 
                 type="text" 
@@ -63,6 +64,7 @@ const EditForm = (props) => {
                 type="submit" 
                 value="Edit" />
             </form>
+            </div>
         </div>
         </>
         

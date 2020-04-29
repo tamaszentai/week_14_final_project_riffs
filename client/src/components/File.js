@@ -20,7 +20,6 @@ const File = (props) => {
             <details>
             <summary>Details</summary>
                 <div className="file-right">
-                    <h6>Name: {props.title}</h6>
                     <h6>Description: {props.description}</h6>    
                 </div>
                 
