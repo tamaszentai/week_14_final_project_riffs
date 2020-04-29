@@ -11,7 +11,7 @@ const FileList = (props) => {
     })}
 
    
-    console.log(props.files);
+    //console.log(props.files);
 
     
     return (

@@ -7,6 +7,9 @@ const EditForm = (props) => {
     const [description, setDescription] = useState('');
     const [message, setMessage] = useState(null);
 
+    const originalTitle = props.location.state.title;
+    const originalDescription = props.location.state.description;
+    const id = props.location.state.id;
 
     const handleTitleChange = event => {
         const newTitle = event.target.value;
@@ -20,29 +23,38 @@ const EditForm = (props) => {
 
     const handleEdit = event => {
         event.preventDefault();
-        setMessage(<div className="success">Update complete</div>);
-        document.querySelector(".form-style-5").style.display = "none";
-        const data = new FormData();// If file selected
-         // if file not selected throw error
-         console.log('error'); 	
-		}
+
+        axios.put("/api/riffs/edit/" + id, {title, description} )
+        .then(() => {
+            this.props.history.push("/");
+        })
+        .catch(error => {
+            //alert("Oops some error happened, please try again");
+        });
+        // setMessage(<div className="success">Update complete</div>);
+        // document.querySelector(".form-style-5").style.display = "none";
+        
+        // const data = new FormData();// If file selected
+        //  // if file not selected throw error
+        //  console.log('error');
+
+	}
 	
 
     return (
         
         <>
-        {console.log(props.location.state.id)}
         { message }
         <div className="form-style-5">
 
             <form onSubmit={handleEdit}>
                 <input 
                 type="text" 
-                placeholder={props.location.state.title}
+                placeholder={originalTitle}
                 onChange={handleTitleChange}/>
 
                 <textarea 
-                placeholder={props.location.state.description}
+                placeholder={originalDescription}
                 maxLength="100"
                 rows="3" 
                 onChange={handleDescriptionChange}/>

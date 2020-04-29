@@ -97,4 +97,20 @@ router.post( '/upload', ( req, res ) => {
     );
 });
 
+router.route("/edit/:id").put((req, res, next) => {
+  console.log(Object.keys(req.body));
+  DOCUMENT.findByIdAndUpdate(
+    req.params.id,
+    // console.log(req.params.id);  
+    { $set: { title: Object.keys(req.body)[0], description: Object.keys(req.body)[1] } },
+    { new: true },
+    (err, updateDoc) => {
+      if (err) {
+        return next(err);
+      }
+      res.status(200).send(updateDoc);
+    }
+  );
+});
+
 module.exports = router;
