@@ -1,7 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Link } from "react-router-dom";
+import EditForm from './EditForm';
 
 const File = (props) => {
+
+    const [title, setTitle] = useState(props.title);
+		const [description, setDescription] = useState(props.description);
+		const [id, setId] = useState(props.id);
+
     return (
+    
     <div className="file">
         <div className="file-left">
             <h5>{props.title}</h5>
@@ -12,12 +20,22 @@ const File = (props) => {
             <details>
             <summary>Details</summary>
                 <div className="file-right">
-                    <h6>{props.description}</h6>    
+                    <h6>Name: {props.title}</h6>
+                    <h6>Description: {props.description}</h6>    
                 </div>
+                
                 <div className="editdeletediv">
-							<button className="fa fa-edit" />
-							<button className="fa fa-trash" />
-            </div>  
+                    
+                    <Link to={{
+                        pathname: '/EditForm',
+                        state: {
+                            title: title,
+                            description: description,
+                            id: id
+                        }
+                        }}><button className="fa fa-edit" /></Link>
+                    <button className="fa fa-trash" />						
+                </div>  
             </details>
         </div>
      </div>

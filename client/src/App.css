@@ -42,8 +42,9 @@ header {
 }
 
 ul {
+	opacity: 0.8;
   border-radius: 15px;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   display: inline-block;
   list-style-type: none;
   margin: 0;
@@ -60,9 +61,11 @@ ul {
 
 li {
   display: inline-block;
+  
 }
 
 li a {
+	opacity: 0.8;
   display: block;
   /* color: black; */
   color: white;
@@ -72,8 +75,10 @@ li a {
 }
 
 li a:hover {
+	opacity: 1;
   border-radius: 15px;
-  background-color: #511;
+  /* background-color: #511; */
+  color: white;
 }
 
 textarea {
@@ -167,7 +172,7 @@ textarea {
 
 .hometext{
 	grid-area: 1 / 1 / 2 / 2;
-	font-size: 2em;
+	font-size: 1.5em;
 	text-align: center;
 }
 
@@ -247,3 +252,4 @@ summary {
 	text-align: center;
 	padding: 10px;
 }
+

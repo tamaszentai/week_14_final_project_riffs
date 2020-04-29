@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import UploadForm from '../components/UploadForm';
+import EditForm from '../components/EditForm';
 import FileList  from '../components/FileList';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -44,6 +45,7 @@ const Main = () => {
                         <Route exact path="/" component={Home} />
                         <Route path="/UploadForm" component={UploadForm} />
                         <Route path="/FileList" render={() => <FileList files={files}/>}/>
+                        <Route path="/EditForm" component={EditForm} />
                         </div>
                     </React.Fragment>
                 </Router>
