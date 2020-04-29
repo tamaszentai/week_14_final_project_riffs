@@ -7,7 +7,13 @@ const FileList = (props) => {
     if ( props.files !== null) {
         
         riffNode = props.files.map((file, index) => {
-        return <File title={file.title} url={file.fileUrl} description={file.description} key={file.index} id={file._id.toString()}></File>
+        return <File title={file.title}
+                     url={file.fileUrl}
+                     description={file.description}
+                     key={index}
+                     id={file._id.toString()}
+                     fileName={file.fileName} 
+                     ></File>
     })}
 
    

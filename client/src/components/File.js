@@ -6,7 +6,8 @@ const File = (props) => {
 
     const [title, setTitle] = useState(props.title);
 		const [description, setDescription] = useState(props.description);
-		const [id, setId] = useState(props.id);
+    const [id, setId] = useState(props.id);
+    const [fileName, setFileName] = useState(props.fileName);
 
     return (
     
@@ -33,7 +34,15 @@ const File = (props) => {
                             id: id
                         }
                         }}><button className="fa fa-edit" /></Link>
-                    <button className="fa fa-trash" />						
+
+					<Link to={{
+                        pathname: '/DeleteForm',
+                        state: {
+							title: title,
+                            id: id,
+                            fileName: fileName
+                        }
+                        }}><button className="fa fa-trash" /></Link>			
                 </div>  
             </details>
         </div>

@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import UploadForm from '../components/UploadForm';
 import EditForm from '../components/EditForm';
+import DeleteForm from '../components/DeleteForm';
 import FileList  from '../components/FileList';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -46,6 +47,7 @@ const Main = () => {
                         <Route path="/UploadForm" component={UploadForm} />
                         <Route path="/FileList" render={() => <FileList files={files}/>}/>
                         <Route path="/EditForm" component={EditForm} />
+                        <Route path="/DeleteForm" component={DeleteForm} />
                         </div>
                     </React.Fragment>
                 </Router>

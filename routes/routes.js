@@ -98,7 +98,6 @@ router.post( '/upload', ( req, res ) => {
 });
 
 router.route("/edit/:id").put((req, res, next) => {
- 
   DOCUMENT.findByIdAndUpdate(
     req.params.id,  
     { $set: { title: req.body.title, description: req.body.description} },
@@ -110,6 +109,42 @@ router.route("/edit/:id").put((req, res, next) => {
       res.status(200).send(updateDoc);
     }
   );
+});
+
+router.route("/:id").delete((req, res, next) => {
+  DOCUMENT.findByIdAndRemove(req.params.id, (err, result) => {
+    
+
+    if (err) {
+      return next(err);
+    }
+
+    console.log(result);
+    const fileName = result.fileName;
+    
+    // let s3bucket = new aws.S3({
+    //   accessKeyId: process.env.ACCESS_KEY_ID,
+    //   secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    //   region: process.env.REGION
+    // });
+
+    let params = {
+      Bucket: process.env.BUCKET,
+      Key: fileName
+    };
+
+    s3.deleteObject(params, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send({
+          status: "200",
+          responseType: "string",
+          response: "success"
+        });
+      }
+    });
+  });
 });
 
 module.exports = router;
