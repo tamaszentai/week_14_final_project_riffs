@@ -35,7 +35,7 @@ const EditForm = (props) => {
             //alert("Oops some error happened, please try again");
         });
         setMessage(<div className="success">Update complete</div>);
-        document.querySelector(".test").style.display = "none";
+        document.querySelector(".edit-form-hiding").style.display = "none";
         setTimeout(function(){ window.location.href = "http://localhost:3000/FileList"; }, 500);
 	}
 	
@@ -47,7 +47,7 @@ const EditForm = (props) => {
         <div className="form-style-5">
         
         { message }
-            <div className="test">
+            <div className="edit-form-hiding">
             <form onSubmit={handleEdit}>
                 <input 
                 type="text" 

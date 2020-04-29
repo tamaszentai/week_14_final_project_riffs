@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 
 const DeleteForm = (props) => {
     const title = props.location.state.title;
     const fileName = props.location.state.fileName;
     const id = props.location.state.id;
+    const [message, setMessage] = useState(null);
     console.log(fileName, id);
     
     const handleDelete = event => {
       axios.delete("/api/riffs/" + id)
-      .then(() => {
-          console.log('hello');
-        }
-    )};
+      .then(( response ) => { if ( 200 === response.status ){
+        document.querySelector(".delete-form-hiding").style.display = "none";
+        setMessage(<div className="progress">Your riff has been destroyed</div>);
+        setTimeout(function(){ window.location.href = "http://localhost:3000/FileList"; }, 500);
+      }
+    })
+    
+    };
     
     const handleCancelDelete = event => {
         window.location.href = "http://localhost:3000/FileList";
@@ -21,10 +26,13 @@ const DeleteForm = (props) => {
     
     return (
             <div className="form-style-5">
-              <h3>Are you sure you want to delete?</h3>
-              <h1>{title}</h1>
-              <button onClick={handleDelete}>Yes</button>
-              <button onClick={handleCancelDelete}>No</button>
+                {message}
+                <div className="delete-form-hiding">
+                    <h3>Are you sure?</h3>
+                    <h1>{title}</h1>
+                    <button id="deletebutton" onClick={handleDelete}>DELETE</button>
+                    <button id="canceldeletebutton" onClick={handleCancelDelete}>BACK</button>
+                </div>
             </div>
 
     )

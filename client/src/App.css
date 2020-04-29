@@ -256,3 +256,35 @@ summary {
 h1 {
 	text-align: center;
 }
+
+#deletebutton {
+	width: 10em;
+	padding: 1em;
+	margin: 1em;
+	/* float: left; */
+	background-color: rgb(68, 1, 1);
+	font-family: 'Lacquer', cursive;
+	color: #999;
+	font-size: 1em;
+}
+
+#deletebutton:hover{
+	background-color: rgb(109, 3, 3);
+}
+
+#canceldeletebutton {
+	width: 10em;
+	padding: 1em;
+	margin: 1em;
+	/* float: right; */
+	font-family: 'Lacquer', cursive;
+	font-size: 1em;
+}
+
+#canceldeletebutton:hover{
+	background-color: #999;
+}
+
+h3 {
+	text-align: center;
+}
